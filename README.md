@@ -10,12 +10,16 @@ These two skills break the pattern.
 
 ---
 
-## 1-3-1 Analysis — Decide with structure, not gut feel
+## 1-3-1 Analysis — Decide with thorough & structured approach, not gut feel
 
 **Problem frame** (root cause, core tension, status quo baseline, what success looks like)
+
 → **Evaluation criteria** (weighted, with concrete score anchors — locked before any options are generated)
+
 → **3 approaches** (each assessed per criterion: strengths, risks rated by probability × impact × reversibility, practical mitigations with cost and residual risk, second-order effects)
+
 → **Decision matrix** (3 approaches scored against criteria, weighted totals)
+
 → **Recommendation** (one — often a hybrid combining the strongest elements across approaches, with mitigations for each weakness)
 
 ### Without the skill:
@@ -50,10 +54,15 @@ Same question. The difference: criteria were defined before options. Three disti
 ## Deep Research — Research with method, not luck
 
 **Scope** (assess user's context and why, sharpen the question, map 3–6 dimensions of the topic)
+
 → **Search** (one subagent per dimension in parallel, or sequential in chat — varied query types: definitional, current state, critical, comparative, applied)
+
 → **Refine outline** (restructure dimensions based on what the evidence actually revealed — add, reorder, merge, flag gaps)
+
 → **Triangulate** (classify topic maturity, apply adaptive credibility tiers, cross-verify top 5 claims from independent sources, detect conflicts)
+
 → **Synthesize** (organize by insight not by source, attribute every claim, state uncertainty honestly)
+
 → **Package** (one-line answer, key findings with verification status, full analysis, knowledge gaps, sources grouped by credibility tier)
 
 ### Without the skill:
