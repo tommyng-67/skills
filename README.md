@@ -1,40 +1,44 @@
 # PM Decision Toolkit
 
-Three AI skills for product managers, founders, and CEOs who make decisions for a living.
+Most product decisions are dead before the analysis starts. Someone picks a favorite, then builds the criteria to justify it. The decision was made in the first 30 seconds. Everything after is theater.
 
-| Skill | Purpose | Trigger | Output |
-|---|---|---|---|
-| **[1-5-X Analysis](./1-5-x-analysis)** | Exhaustive decision analysis | "help me decide", "compare", "pros and cons" | Top 3 recommendations + full `.md` analysis |
-| **[1-3-1 Analysis](./1-3-1-analysis)** | Fast decision: 3 options, 1 winner | User explicitly says "1-3-1" | Single recommendation + full `.md` analysis |
-| **[Deep Research](./deep-research)** | Understand a topic before deciding | "research this", "look into", "what is X" | Key findings in chat + full `.md` research report |
+These skills force the opposite sequence. Lock what matters before you see the options. Score every approach against the same criteria. Construct the recommendation from whatever scores highest - even if it's a hybrid nobody originally proposed.
 
-## How They Work Together
+I built this because I kept running into the same pattern at Grab, at Axon, at my own startups. Rigorous people making unrigorous decisions - not because they lacked judgment, but because they lacked structure to protect them from their own biases.
 
-**Research first, then decide.** Use Deep Research to understand a topic. Use 1-5-X or 1-3-1 to decide what to do about it.
+## Three Skills
+
+| Skill | What it does | Trigger |
+|---|---|---|
+| [1-5-X Analysis](./1-5-x-analysis) | Full decision analysis. 5+ approaches scored against weighted criteria. Top 3 recommendations, often a hybrid. | "Help me decide", "compare", "should we X or Y" |
+| [1-3-1 Analysis](./1-3-1-analysis) | Same method, tighter scope. 3 approaches, 1 winner. | Say "1-3-1" |
+| [Deep Research](./deep-research) | Multi-source research with cross-verification and adaptive source credibility. | "Research this", "what is X", "deep dive on" |
+
+## Sequence
+
+Research first, then decide.
 
 ```
 "Research agentic AI workflows"          → Deep Research
 "Should we build or buy our AI tooling?" → 1-5-X Analysis
-"1-3-1 on which vendor to pilot with"   → 1-3-1 Analysis
+"1-3-1 on which vendor to pilot"         → 1-3-1 Analysis
 ```
 
-## Design Principles
+## What's Different
 
-**Criteria before options.** Both decision skills define weighted evaluation criteria *before* generating approaches — so every pro/con is assessed against what actually matters, not random advantages.
+**Criteria before options.** Both decision skills lock weighted evaluation criteria before generating approaches. Each criterion gets concrete score anchors - what earns a 5, what earns a 1. Without anchors, every approach lands at 3s and 4s and the matrix tells you nothing.
 
-**Topic-maturity-adaptive credibility.** Deep Research calibrates source credibility to the topic. Established topics require institutional sources. Emerging topics (AI, new protocols) recognize practitioners as primary evidence and use practitioner-convergence as the credibility test.
+**Hybrid construction.** The best answer is often a synthesis. Both skills build hybrids when warranted - naming which elements come from which approach, explaining why they're compatible, showing the combination scores higher than any single option. This isn't hedging. It's engineering the strongest possible recommendation from the parts that actually work.
 
-**Environment-adaptive.** Deep Research auto-detects agentic environments (subagent-capable platforms) and runs parallel search + dedicated verification. In chat, it executes sequentially. Same methodology, different speed.
-
-**Hybrid recommendations.** The strongest approach is often a synthesis combining the best elements of multiple options. Both decision skills actively construct hybrids when warranted — naming which elements come from which approach and why they're compatible.
+**Adaptive credibility.** Deep Research calibrates source credibility to how mature the topic is. Established topics need institutional sources. Emerging topics - AI tooling, new protocols, anything moving faster than journals can publish - use practitioner-convergence as the credibility test: do 2+ independent builders report the same finding?
 
 ## Install
 
-Each skill folder contains a `SKILL.md` (the skill definition) and a `README.md` (documentation). Install the `SKILL.md` files into your platform's skill library, or download the pre-packaged `.skill` files from [Releases](./releases).
+Each skill folder contains two files:
+- `SKILL.md` - the skill definition. Add this to your platform's skill library.
+- `README.md` - documentation.
 
-## Platform Compatibility
-
-These skills are platform-agnostic. They work on any platform that supports skill-based AI workflows — including but not limited to Claude Projects, Cowork, Claude Code, Cursor, and Codex. Agentic features (parallel search, verification subagents) activate automatically when the platform supports subagents.
+Compatible with any platform that supports skill-based AI workflows - Claude Code, Claude Projects, Cursor, Codex, Cowork, and others.
 
 ## License
 

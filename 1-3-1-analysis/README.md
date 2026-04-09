@@ -1,45 +1,54 @@
 # 1-3-1 Analysis
 
-Constrained decision-making: **1** precisely framed problem → weighted evaluation criteria → exactly **3** approaches → **1** recommendation. The faster sibling of 1-5-X.
+One problem. Three approaches. One recommendation. No hedging.
 
-## Why This Exists
-
-Not every decision warrants a full 1-5-X. Sometimes three well-chosen options and one decisive call is enough. The 1-3-1 delivers the same analytical rigor — criteria-first, per-criterion assessment, mitigations factored into scoring — but in a tighter package with a single clear winner.
+The constrained sibling of 1-5-X. Same analytical method - criteria-first, per-criterion assessment, mitigations factored into scoring - but scoped to exactly three options and a single winner. For decisions where three well-chosen paths and one decisive call is enough.
 
 ## How It Works
 
 | Step | What happens |
 |---|---|
-| **Frame the Problem** | Same depth as 1-5-X: root cause separation, status quo baseline, core tension, success definition, hidden decisions. |
-| **Define Criteria** | 3–5 weighted criteria (tighter than 1-5-X's 4–7). Concrete score anchors to prevent inflation. |
-| **Generate & Assess Exactly 3 Approaches** | Three genuinely distinct paths spanning the decision space (e.g., conservative / moderate / bold). Each assessed per criterion with scores, risks, mitigations, and second-order effects. |
-| **Decision Matrix** | 3-column summary table. |
-| **Recommend Exactly 1** | Single winner. Can be a hybrid combining elements from multiple approaches. No hedging — pick one. |
+| **Frame** | Same depth as 1-5-X: root cause separation, status quo baseline, core tension, success definition. |
+| **Criteria** | 3-5 weighted criteria with concrete score anchors. Tighter than 1-5-X's 4-7. |
+| **Three approaches** | Three genuinely distinct paths spanning the decision space - typically conservative, moderate, bold. Each scored per criterion with risks, mitigations, and second-order effects. |
+| **Matrix** | 3-column summary table. |
+| **One winner** | Single recommendation. Can be a hybrid of elements from the three. No hedging - pick one and commit. |
+
+## Example Output (Abbreviated)
+
+What the recommendation looks like:
+
+> **Recommendation: Approach B (Moderate) with one element from C**
+>
+> Run the 4-week pilot with the existing vendor (B) but adopt C's success criteria - measure behavior change, not satisfaction scores. B wins on speed-to-learning (score: 4.1) and reversibility (score: 4.5). C's measurement framework is the strongest of the three but the implementation timeline kills it.
+>
+> **Why not A:** Conservative path avoids the risk but also avoids the data. You learn nothing in 90 days.
+>
+> **Why not C:** Right destination, wrong sequence. The 12-week build assumes requirements that the pilot will surface.
+>
+> **Next steps:** Vendor kickoff by Friday. Define the 3 behavioral metrics by EOD tomorrow. First checkpoint at day 14.
+
+## When to Use
+
+Use 1-3-1 when you say "1-3-1." That's the only trigger. Every other decision or comparison request goes to 1-5-X.
+
+| Use 1-3-1 | Use 1-5-X instead | Use Deep Research instead |
+|---|---|---|
+| You want speed and a single call | Decision space is wide, need 5+ options | You need to understand the topic first |
+| Three options is enough | Multiple recommendations or hybrid needed | "Research this", "what is X" |
 
 ## Output
 
 **In chat:** The single recommended approach with rationale, risks, and next steps.
 
-**File:** Full analysis (problem frame, criteria, all 3 approaches with per-criterion assessment, decision matrix, recommendation) saved as `.md`.
-
-## When to Use
-
-| Use **1-3-1** | Use **1-5-X** instead | Use **Deep Research** instead |
-|---|---|---|
-| User explicitly says "1-3-1" | Any other decision or comparison | User wants to understand a topic, not decide |
-| Faster, lighter-weight decision | Complex decisions needing 5+ options | "Research this", "what is X", "deep dive" |
-| 3 options and 1 winner is sufficient | Multiple recommendations or hybrid needed | Findings and insights, not ranked approaches |
-
-**Trigger:** Only activates when you explicitly say "1-3-1". All other decision requests default to 1-5-X.
+**File:** Full analysis saved as `.md` - problem frame, criteria, all three approaches with per-criterion scoring, decision matrix, and the recommendation.
 
 ## Install
 
-Download `1-3-1-analysis.skill` and add it to your project's skill library.
+Add `SKILL.md` to your platform's skill library.
 
 ## Part of the PM Decision Toolkit
 
-Three skills that work together:
-
-- **[1-5-X Analysis](../1-5-x-analysis)** — Exhaustive decision analysis
-- **[1-3-1 Analysis](../1-3-1-analysis)** — Fast decision: 3 options, 1 winner (this skill)
-- **[Deep Research](../deep-research)** — Understand a topic before deciding
+- [1-5-X Analysis](../1-5-x-analysis) - Full decision analysis
+- [1-3-1 Analysis](../1-3-1-analysis) - Fast decision: 3 options, 1 winner (this skill)
+- [Deep Research](../deep-research) - Understand before deciding
