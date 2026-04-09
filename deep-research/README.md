@@ -1,52 +1,59 @@
 # Deep Research
 
-Structured multi-source research that adapts to what it finds. The outline isn't locked before the evidence comes in - it gets revised after. Claims get cross-verified. Source credibility is calibrated to how mature the topic actually is.
+Six-phase research methodology: **Scope → Search → Refine Outline → Triangulate → Synthesize → Package.**
 
-## How It Works
-
-Six phases. The order matters.
-
-**Scope.** Assess why the user is researching this. Sharpen the question. Map 3-6 dimensions of the topic. Set depth - standard or deep.
-
-**Search.** One search per dimension minimum. In agentic environments (Claude Code, Cursor, Codex): one subagent per dimension running 3-5 parallel searches. In chat: sequential. Same methodology, different speed.
-
-**Refine the outline.** This is what most research tools skip. After evidence is gathered, revise the dimension structure - add what the evidence revealed, cut what turned out empty, reorder by actual significance. Structure follows evidence, not the other way around.
-
-**Triangulate.** Classify topic maturity: established, emerging, or mixed. Apply adaptive credibility tiers. For established topics (databases, supply chain), institutional sources carry weight. For emerging topics (LLM applications, agentic AI), practitioners building and shipping are the primary evidence - the credibility test becomes "do 2+ independent practitioners converge on the same finding?" Cross-verify the 5 most important claims from independent sources.
-
-**Synthesize.** Organize by insight, not by source. State convergence with confidence, conflicts with transparency, gaps honestly.
-
-**Package.** One-line answer, key findings, detailed analysis, verification status for each major claim, knowledge gaps, sources grouped by credibility tier.
-
-## Example Output (Abbreviated)
-
-What the findings section looks like:
-
-> **One-line answer:** Multi-agent orchestration is converging on supervisor patterns, but the real bottleneck is handoff reliability, not agent capability.
->
-> **Key findings:**
->
-> 1. Multi-agent frameworks are converging on a supervisor pattern - a routing agent that delegates to specialized sub-agents. CrewAI, AutoGen, and LangGraph all implement variations. The "flat peer" architecture (agents negotiating directly) works in demos but breaks at 4+ agents due to context pollution.
->
-> 2. Cost per agentic task is dropping faster than quality is improving. Median cost for a research-grade workflow fell from ~$2.40 to ~$0.35 in 8 months (based on 3 independent practitioner benchmarks). Quality gains are incremental.
->
-> **Verification:** Finding 1 verified (4 independent sources). Finding 2 partially verified - cost figures converge across sources, quality assessment based on 2 sources with different evaluation criteria.
+Turns AI from "search and summarize" into a structured research process — with source credibility assessment calibrated to topic maturity, cross-verification of key claims, and parallel execution in agentic environments.
 
 ## When to Use
 
-Use Deep Research when you need to understand something before making a call. If you already understand the topic and need to decide, use 1-5-X or 1-3-1.
+You want to understand a topic in depth — a new technology, trend, market, concept, or competitive landscape. You want sourced findings with honest uncertainty, not a confident summary built on one article.
 
-| Use Deep Research | Use 1-5-X instead | Use 1-3-1 instead |
+**Trigger phrases:** "research this", "look into", "what is X", "deep dive on", "what's the latest on", "explain [concept]", "investigate"
+
+## What Makes This Different
+
+### Topic-Maturity-Adaptive Credibility
+
+For established topics (databases, supply chain), peer-reviewed research and official documentation are the gold standard. For emerging topics (LLM tooling, agentic AI, MCP protocol), those sources don't exist yet — the signal lives in practitioner blogs, GitHub repos, and engineering posts from people who are actually building.
+
+This skill classifies every topic as **Established**, **Emerging**, or **Mixed**, then applies different credibility standards:
+
+- **Established:** peer-reviewed > reputable journalism > industry blogs > forums
+- **Emerging:** core maintainer docs and named practitioners with shipped products become primary sources. The credibility test: "Do 2+ independent practitioners report the same finding?" One person's experience is an anecdote. Three converging independently is a signal.
+
+### Dynamic Outline Refinement
+
+Research that locks its structure before seeing any evidence produces reports organized around assumptions, not findings. This skill maps dimensions before searching (Phase 1), then *revises the structure after evidence gathering* (Phase 3) — adding dimensions the evidence revealed, reordering by significance, flagging gaps.
+
+### Cross-Verification
+
+The top 5 claims — the findings most likely to be acted on — are independently verified from sources not already cited. Each classified as **verified**, **contradicted**, or **unverifiable**. This surfaces false consensus and single-source claims before they reach the user.
+
+### Environment-Adaptive Execution
+
+| | Chat (single-agent) | Agentic (subagent-capable) |
 |---|---|---|
-| "Research this", "what is X", "deep dive" | "Help me decide", "compare options" | Say "1-3-1" for speed |
-| You want findings and implications | You want ranked approaches with scoring | You want one winner |
+| Search | 6–8 sequential searches | 15–20+ parallel (one subagent per dimension) |
+| Verification | Top 3 claims checked inline | Dedicated verification subagent, top 5 claims |
+| Depth | Standard coverage | Deep coverage with full-article reading |
 
-## Install
+Same methodology. Execution scales with the platform. No lock-in.
 
-Add `SKILL.md` to your platform's skill library.
+## How It Works
 
-## Part of the PM Decision Toolkit
+1. **Scope** — Assess why the user is researching (context sharpens relevance, not conclusions). Restate the question precisely. Map 3–6 dimensions. Set depth.
+2. **Search** — Parallel subagents per dimension (agentic) or sequential queries (chat). Varied query types per dimension: definitional, current state, critical, comparative, applied.
+3. **Refine Outline** — Post-evidence structural adjustment. Add, reorder, merge, or flag dimensions. No new searches — structural only.
+4. **Triangulate** — Classify topic maturity. Apply adaptive credibility tiers. Cross-verify top claims. Detect conflicts. Check coverage.
+5. **Synthesize** — Organize by insight, not by source. Attribute every claim. State convergence with confidence, conflicts with transparency, gaps with honesty.
+6. **Package** — One-line answer, key findings (3–7), detailed analysis, verification status, knowledge gaps, sources grouped by tier.
 
-- [1-5-X Analysis](../1-5-x-analysis) - Full decision analysis
-- [1-3-1 Analysis](../1-3-1-analysis) - Fast decision: 3 options, 1 winner
-- [Deep Research](../deep-research) - Understand before deciding (this skill)
+## Default Output
+
+**In-chat:** One-line answer + key findings.
+
+**File:** Full research output saved as `.md`.
+
+## Installation
+
+Upload `SKILL.md` to your AI platform's project knowledge, skills directory, or system prompt. See the [main README](../README.md) for platform-specific instructions.

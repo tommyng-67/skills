@@ -1,46 +1,62 @@
 # 1-5-X Analysis
 
-One problem framed precisely. Weighted evaluation criteria locked before options exist. 5+ approaches scored against those criteria. X recommendations - often a hybrid built from the strongest elements.
+The exhaustive version of [1-3-1](../1-3-1-analysis/). Same methodology, wider aperture: **1** precisely framed problem → weighted evaluation criteria → **5+** approaches assessed per criterion → **X** recommendations (often a hybrid combining the strongest elements across approaches).
 
-## How It Works
-
-The method has five steps. The sequence matters more than any individual step.
-
-**Frame the problem.** Separate symptom from root cause. Establish what happens if nobody does anything. Name the core tension that makes this decision hard. Define what success looks like in 6-12 months. Most problems as initially stated are symptoms - "conversion dropped 15%" is a symptom. The root cause might be pricing, onboarding, competitive shift, or targeting. The analysis addresses the cause.
-
-**Lock criteria.** 4-7 weighted evaluation criteria, each with concrete score anchors. "Can ship with the current 3-person team in Q2" - not "feasibility." Criteria trace directly to the problem frame: the core tension produces criteria on both sides, the success definition maps to at least one, binding constraints appear as their own. Weights sum to 100%.
-
-**Generate 5+ approaches.** Each must be a genuinely distinct path, not a parameter tweak. The set spans the decision space: one conservative, one aggressive, one unconventional path that challenges an assumption from the problem frame. If a hybrid seems obvious upfront, the component approaches still get generated individually first.
-
-**Score.** Every approach gets a per-criterion assessment - score with justification, risks rated by probability and impact, specific mitigations with residual risk, second-order effects. The decision matrix summarizes everything in one table.
-
-**Recommend top 3.** Often a hybrid. The skill names which elements come from which approaches, explains why they're compatible, and shows the combination outscores any individual option.
-
-## Example Output (Abbreviated)
-
-What the recommendation section looks like:
-
-> **#1: Hybrid of Approaches B + D**
->
-> Combine B's phased rollout (highest time-to-delivery score at 4.2) with D's partner distribution channel (highest reach score at 4.5). B alone can't solve distribution. D alone requires 3x the engineering investment. The hybrid sequences D's distribution through B's existing infrastructure - capturing the reach advantage without the full build cost.
->
-> **Critical risks:** Partner dependency creates a single point of failure (medium probability, high impact if realized). Mitigation: parallel direct channel development starting month 3, targeting 30% of volume by month 6. Residual risk: 60-day window where partners control 100% of distribution.
->
-> **Watch:** 500+ activated partner accounts within 60 days. Below that, reassess the partner path.
+Use this when the decision is complex enough that three options can't span the full space — multiple stakeholders, competing priorities, high irreversibility, or ambiguous trade-offs that require more approaches to surface the right path.
 
 ## When to Use
 
-| Use 1-5-X | Use 1-3-1 instead | Use Deep Research instead |
+| Use **1-5-X** | Use **1-3-1** instead |
+|---|---|
+| Complex decisions with many viable paths | Decisions where 3 options span the space |
+| Multiple stakeholders with competing priorities | Clear problem, faster turnaround needed |
+| Need multiple recommendations or phased approach | Need exactly 1 decisive recommendation |
+| High-stakes, irreversible decisions | Two-way-door decisions |
+
+**Trigger phrases:** "1-5-X", "help me decide", "compare options", "should we X or Y", "what would you recommend", "pros and cons", "what's the best approach"
+
+This skill is the default for any decision or comparison request. 1-3-1 triggers only when the user explicitly asks for it.
+
+## What's Different from 1-3-1
+
+| | 1-3-1 | 1-5-X |
 |---|---|---|
-| Any decision worth structured evaluation | Say "1-3-1" for 3 options and 1 winner | You need to understand the topic, not decide |
-| "Help me decide", "compare", "pros and cons" | Faster, lighter-weight | "Research this", "what is X" |
+| Approaches | Exactly 3 | 5+ (including unconventional paths) |
+| Criteria | 3–5 | 4–7 (more dimensions assessed) |
+| Recommendations | 1 | Top 3 ranked (conditional, phased, or hybrid) |
+| Problem framing | Root cause + core tension | Adds: hidden decision surfacing, irreversibility assessment, dependency mapping |
+| Risk analysis | Probability × impact | Adds: reversibility assessment, residual risk after mitigation, second-order effects |
+| Best for | Clear decisions, time-constrained | Complex decisions, multiple stakeholders, high stakes |
 
-## Install
+## How It Works
 
-Add `SKILL.md` to your platform's skill library.
+### Step 1: Frame the Problem
+Everything from 1-3-1's framing, plus:
 
-## Part of the PM Decision Toolkit
+- **Irreversibility assessment** — one-way door (hard to reverse, demands rigorous analysis) vs. two-way door (easily reversed, favors speed). Directly affects risk tolerance in the recommendation.
+- **Dependency mapping** — what upstream decisions does this depend on? What downstream decisions does this unlock or block?
+- **Hidden decision surfacing** — "should we enter market X?" might really be asking "are we a single-product company or a platform?"
 
-- [1-5-X Analysis](../1-5-x-analysis) - Full decision analysis (this skill)
-- [1-3-1 Analysis](../1-3-1-analysis) - Fast decision: 3 options, 1 winner
-- [Deep Research](../deep-research) - Understand before deciding
+### Step 2: Define Evaluation Criteria
+4–7 weighted criteria with concrete 1/5 score anchors. The core tension produces at least one criterion on each side (speed vs. quality → criterion for delivery timeline AND criterion for output quality). Irreversibility influences weights — high-irreversibility decisions weight risk-related criteria more heavily.
+
+### Step 3: Generate & Assess 5+ Approaches
+Each approach is a genuinely distinct strategic path — not parameter tweaks. Must include at least one conservative path, one aggressive path, and one unconventional path that challenges an assumption from the problem frame.
+
+Each assessed per criterion with: score, strengths, risks (probability × impact × reversibility), mitigations (with cost and residual risk), and second-order effects.
+
+### Step 4: Decision Matrix
+Summary comparison table.
+
+### Step 5: Recommend Top 3
+Recommendations can be: single best option, primary + fallback, conditional ("if X, go with A; if Y, go with B"), or hybrid combining elements across approaches. Each recommendation includes key risks, mitigations, leading indicators to watch, and immediate next steps.
+
+## Default Output
+
+**In-chat:** Top 3 recommendations with rationale, risks, mitigations, and next steps.
+
+**File:** Full analysis saved as `.md` (problem frame, criteria, all approaches scored, decision matrix, recommendations).
+
+## Installation
+
+Upload `SKILL.md` to your AI platform's project knowledge, skills directory, or system prompt. See the [main README](../README.md) for platform-specific instructions.
