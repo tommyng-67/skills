@@ -1,10 +1,10 @@
 # PM Decision Toolkit
 
-Most product decisions are dead before the analysis starts. Someone picks a favorite, then builds the criteria to justify it. The decision was made in the first 30 seconds. Everything after is theater.
+The difference between a good decision and a bad one usually isn't more information. It's whether you defined what matters before or after you saw the options.
 
-These skills force the opposite sequence. Lock what matters before you see the options. Score every approach against the same criteria. Construct the recommendation from whatever scores highest - even if it's a hybrid nobody originally proposed.
+Define criteria after, and you'll score to confirm what you already believe. Define criteria first, and the strongest approach surfaces on its own - even when it's a hybrid nobody proposed.
 
-I built this because I kept running into the same pattern at Grab, at Axon, at my own startups. Rigorous people making unrigorous decisions - not because they lacked judgment, but because they lacked structure to protect them from their own biases.
+Three AI skills that enforce that sequence for anyone making decisions that matter - PMs picking product direction, founders weighing strategy, engineers evaluating architecture, or operators choosing where to invest next quarter.
 
 ## Three Skills
 
