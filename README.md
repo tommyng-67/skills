@@ -12,7 +12,7 @@ These two skills break the pattern.
 
 ## 1-3-1 Analysis — Decide with thorough & structured approach, not gut feel
 
-**Problem frame** (root cause, core tension, status quo baseline, what success looks like)
+**1 Problem frame** (root cause, core tension, status quo baseline, what success looks like)
 
 → **Evaluation criteria** (weighted, with concrete score anchors — locked before any options are generated)
 
@@ -20,7 +20,7 @@ These two skills break the pattern.
 
 → **Decision matrix** (3 approaches scored against criteria, weighted totals)
 
-→ **Recommendation** (one — often a hybrid combining the strongest elements across approaches, with mitigations for each weakness)
+→ **1 Recommendation** (often a hybrid combining the strongest elements across approaches, with mitigations for each weakness)
 
 ### Without the skill:
 
