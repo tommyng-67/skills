@@ -1,6 +1,5 @@
-gitignore.md
-*.skill
-repo-README.md
-1-3-1-analysis-README.md
-1-5-x-analysis-README.md
-deep-research-README.md
+.DS_Store
+*.swp
+*.swo
+*~
+.env

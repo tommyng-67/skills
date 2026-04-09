@@ -17,19 +17,6 @@ Scales with environment: agentic environments (subagent-capable platforms) unloc
 
 ---
 
-## Environment Detection
-
-Before executing, detect the environment:
-
-| Environment | Capabilities | Execution mode |
-|---|---|---|
-| **Agentic** (subagents available) | Parallel subagent spawning, file system access, long-running tasks | Parallel search, dedicated verification subagent |
-| **Chat** (single-agent) | Sequential web search, web fetch, file creation | Sequential search, inline verification |
-
-Do not ask the user which environment they're in — detect it from available capabilities. If subagents can be spawned, use agentic mode. Otherwise, use chat mode.
-
----
-
 ## When to Use This Skill
 
 The user wants to **understand a topic** — not make a decision. They want depth, sources, and insights on a subject.
@@ -44,6 +31,19 @@ The user wants to **understand a topic** — not make a decision. They want dept
 | **Approaches** | N/A | 5+ | Exactly 3 |
 | **Recommendations** | N/A | Multiple (often hybrid) | Exactly 1 |
 | **Depth** | Exhaustive topic coverage | Exhaustive option analysis | Faster, lighter-weight |
+
+---
+
+## Environment Check
+
+Before executing, check the environment:
+
+| Environment | Capabilities | Execution mode |
+|---|---|---|
+| **Agentic** (subagents available) | Parallel subagent spawning, file system access, long-running tasks | Parallel search, dedicated verification subagent |
+| **Chat** (single-agent) | Sequential web search, web fetch, file creation | Sequential search, inline verification |
+
+Do not ask the user which environment they're in — detect it from available capabilities. If subagents can be spawned, use agentic mode. Otherwise, use chat mode.
 
 ---
 
