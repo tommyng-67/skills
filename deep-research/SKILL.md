@@ -13,7 +13,7 @@ description: >
 
 Structured research methodology. Six phases: **Scope → Search → Refine Outline → Triangulate → Synthesize → Package.**
 
-Scales with environment: agentic environments (subagent-capable platforms) unlock parallel search and dedicated verification. Chat environments execute sequentially. The methodology is the same — execution adapts.
+Execution model: parallel subagents, one per dimension, each using `agent-browser` as the primary search tool. A dedicated verification subagent runs in Phase 4. Main agent synthesizes all briefs.
 
 ---
 
@@ -34,41 +34,37 @@ The user wants to **understand a topic** — not make a decision. They want dept
 
 ---
 
-## Environment Check
-
-Before executing, check the environment:
-
-| Environment | Capabilities | Execution mode |
-|---|---|---|
-| **Agentic** (subagents available) | Parallel subagent spawning, file system access, long-running tasks | Parallel search, dedicated verification subagent |
-| **Chat** (single-agent) | Sequential web search, web fetch, file creation | Sequential search, inline verification |
-
-Do not ask the user which environment they're in — detect it from available capabilities. If subagents can be spawned, use agentic mode. Otherwise, use chat mode.
-
----
-
 ## Phase 1: Scope
 
-Before searching, define what you're investigating and why. This prevents aimless searching and ensures findings are relevant to the user's actual need.
+Before searching, define what you're investigating. Context shapes how findings are interpreted (Phase 5b), but never which evidence is sought.
 
-**1a: Assess the user's context.** Why does the user want to research this topic? The "why" shapes which dimensions matter most and which findings are worth surfacing.
+**1a: Quarantine the user's context.**
 
-- **If the user provides context** (e.g., "researching agentic AI because I'm evaluating whether to build our PM workflow on it"): use that context to prioritize dimensions. In this example, prioritize maturity, production readiness, toolchain options, and limitations over academic history or theoretical foundations. Do not let the context create confirmation bias — still surface risks, counter-arguments, and complications. The context sharpens *relevance*, not *conclusions*.
-- **If the user provides no context** (e.g., "research agentic AI"): stay broad and neutral. Cover all dimensions evenly without weighting toward any use case.
+- **If the user provides context** (e.g., "researching agentic AI because I'm evaluating whether to build our PM workflow on it"): record it in a **Context Note** — a separate block that captures the user's situation, goals, and any embedded hypotheses or assumptions. **Do not reference the Context Note until Phase 5b.** It does not influence dimensions, search queries, or evidence assessment. It exists solely for the interpretation layer.
+- **If the user provides no context**: no Context Note. Proceed without one.
 
-**1b: Restate the research question.** Sharpen the user's request into a precise question, informed by context if provided. "Look into agentic AI" → "What are the current architectures, toolchains, limitations, and production use cases of agentic AI systems as of early 2026?" With context about PM workflows → "What agentic AI architectures and toolchains are production-ready for knowledge work automation, what are their current limitations, and what does adoption look like in practice?"
+> **Context Note: [record user's stated context, goals, and embedded hypotheses here]**
 
-**1c: Identify dimensions.** Every topic has 3–6 dimensions worth investigating. Map them before searching — they become your search plan. Examples:
+The principle: context is a **lens** (shapes what findings mean for the user), not a **filter** (shapes what evidence gets collected). Filtering creates confirmation bias. Interpreting creates relevance.
+
+**1b: Restate the research question.** Sharpen the user's request into a precise, context-neutral question about the topic itself. The question should be one that any researcher — regardless of the user's specific situation — would ask.
+
+- With context: "researching agentic AI for our PM workflow" → research question is still "What are the current architectures, toolchains, limitations, and production use cases of agentic AI systems?" — NOT "What agentic AI tools work for PM workflows?" The context narrows interpretation later, not the research aperture now.
+- Without context: same process. "Research agentic AI" → same question.
+
+**1c: Identify dimensions.** Derive dimensions from **the topic's natural structure**, not the user's framing. Every topic has 3–6 dimensions. Map them before searching — they become your search plan.
 
 - A **technology**: what it is, how it works, current state, key players, adoption, limitations, trajectory
 - A **trend**: origin, drivers, current data, who's affected, implications, counter-arguments
 - A **concept**: definition, history, key frameworks, applications, criticisms, adjacent concepts
 - A **market**: size, growth, segments, key players, dynamics, risks
 
+**Mandatory dimension: "Limitations, failures, and criticisms."** This dimension is required for every research topic, regardless of context. It cannot be skipped, merged, or deprioritized. It ensures disconfirming evidence enters the pipeline structurally — not as an afterthought.
+
 **1d: Set depth.** Based on the question's complexity:
 
-- **Standard** (default): 6–8 searches in chat, 15–20 in agentic. Covers all dimensions with 2–3 credible sources each.
-- **Deep**: 10–15 searches in chat, 20–30 in agentic. Cross-references across sources, reads full articles, surfaces conflicting viewpoints.
+- **Standard** (default): 15–20 browser searches across all dimensions. Covers each dimension with 2–3 credible sources.
+- **Deep**: 20–30 browser searches. Cross-references across sources, reads full articles, surfaces conflicting viewpoints.
 
 Proceed immediately — do not ask the user to confirm scope.
 
@@ -76,13 +72,12 @@ Proceed immediately — do not ask the user to confirm scope.
 
 ## Phase 2: Search
 
-### Agentic environment:
+Spawn **one subagent per dimension** from Phase 1. Each subagent uses `agent-browser` as its primary search tool:
 
-Spawn **one subagent per dimension** from Phase 1. Each subagent:
-
-1. Runs 3–5 searches targeting its assigned dimension from varied angles (definitional, current state, critical, comparative, applied)
-2. Reads full content of the 2–3 most promising results via `web_fetch`
-3. Writes a **dimension brief** in this format:
+1. Invoke `agent-browser` to run 3–5 searches targeting its assigned dimension from varied angles (definitional, current state, critical, comparative, applied). Instruct agent-browser to: search Google, follow the 2–3 most promising results, read full article content, and return findings with URLs.
+2. For known high-value URLs (official docs, GitHub repos, specific reports), use `web_fetch` directly — faster than agent-browser for targeted retrieval of a known source.
+3. Use agent-browser (not web_fetch) for: open-ended searches, JavaScript-heavy pages, paginated content, sites requiring scrolling or interaction to reveal full content.
+4. Write a **dimension brief** in this format:
 
 ```
 ## [Dimension Name]
@@ -91,34 +86,22 @@ Spawn **one subagent per dimension** from Phase 1. Each subagent:
 ### Gaps (what couldn't be found or remains unclear)
 ```
 
-4. Saves the brief to a local file (e.g., `dimension_1_brief.md`)
+5. Save the brief to a local file (e.g., `dimension_1_brief.md`).
 
 Main agent reads all dimension briefs after subagents complete, then proceeds to Phase 3.
 
 **Subagent coordination rules:**
 - Each subagent operates independently — no inter-subagent communication needed.
-- If a subagent's dimension yields no useful results after 3 searches, it writes a brief stating "No credible sources found" and completes. The gap gets flagged in Phase 6.
+- If a subagent's dimension yields no useful results after 3 agent-browser searches, it writes a brief stating "No credible sources found" and completes. The gap gets flagged in Phase 6.
 - Subagents should avoid overlapping queries. Each subagent owns its dimension exclusively.
 
-### Chat environment:
-
-Execute searches sequentially. One query per dimension minimum.
-
-**Query design principles:**
-- Mix query types: definitional ("what is X"), current state ("X 2026"), critical ("X limitations criticism"), comparative ("X vs Y"), applied ("X use cases enterprise")
-- After initial searches, identify gaps: which dimensions have zero or weak coverage? Run targeted follow-up searches for those.
-- Use `web_fetch` on the **3–5 most promising results** to read full content — search snippets are often too thin for real understanding.
-- Prioritize primary sources (official docs, company blogs, research papers) over secondary coverage (news aggregators, listicles).
-
-### When to stop (both environments):
-
-Stop searching when: (a) every dimension has at least 2 credible sources, AND (b) new searches return information already found. If a dimension remains uncovered, note it as a knowledge gap in Phase 6.
+**When to stop:** Stop searching when (a) every dimension has at least 2 credible sources, AND (b) new searches return information already found. Uncovered dimensions become knowledge gaps in Phase 6.
 
 ---
 
 ## Phase 3: Refine Outline
 
-**This phase runs in both environments.** After evidence is gathered but before synthesis, revisit the dimension structure from Phase 1. Evidence often reveals that the initial structure was incomplete, misordered, or included dimensions with no findable information.
+After evidence is gathered but before synthesis, revisit the dimension structure from Phase 1. Evidence often reveals that the initial structure was incomplete, misordered, or included dimensions with no findable information.
 
 **Do:**
 - **Add** dimensions the evidence revealed that weren't anticipated. (Example: researching "MCP protocol" — Phase 1 mapped architecture, adoption, tooling. Evidence reveals a significant security/trust dimension not initially scoped. Add it.)
@@ -176,16 +159,14 @@ This classification determines how credibility works in 4b.
 
 Identify the **5 most important claims** from the research — findings that the user is most likely to act on or cite.
 
-**Agentic environment:** Spawn a **verification subagent**. For each of the 5 claims, the subagent:
+Spawn a **verification subagent**. For each of the 5 claims, the subagent uses `agent-browser` to:
 
-1. Searches for independent corroboration from a source **not already cited** in the dimension briefs
-2. Classifies each claim as:
+1. Search for independent corroboration from a source **not already cited** in the dimension briefs. Run a targeted search, follow the most credible-looking result, and read the full content.
+2. Classify each claim as:
    - **Verified** — independent source confirms. Name the source.
    - **Contradicted** — independent source disputes. Name the source and the discrepancy.
    - **Unverifiable** — no independent source found. Flag as single-source claim.
-3. Returns a verification report. These classifications feed directly into the synthesis — verified claims are stated with confidence, contradicted claims are presented as tensions, unverifiable claims are flagged.
-
-**Chat environment:** For the top 3 most important claims, run one additional search each specifically seeking independent corroboration. Apply the same verified/contradicted/unverifiable classification.
+3. Return a verification report. These classifications feed directly into the synthesis — verified claims are stated with confidence, contradicted claims are presented as tensions, unverifiable claims are flagged.
 
 ### 4d: Conflict detection
 
@@ -199,6 +180,8 @@ Review the refined dimensions from Phase 3. For each dimension, confirm at least
 
 ## Phase 5: Synthesize
 
+### 5a: Objective synthesis
+
 Organize findings **by insight, not by source.** The output should read as integrated analysis, not a book report that walks through Source 1, then Source 2, then Source 3.
 
 **Structure by dimension or theme:**
@@ -207,6 +190,7 @@ Organize findings **by insight, not by source.** The output should read as integ
 - Where sources converge, state the finding with confidence
 - Where sources conflict, present the tension and your assessment of which is more credible (based on tier)
 - Where cross-verification (Phase 4c) flagged a claim as contradicted or unverifiable, state this explicitly
+- The mandatory "Limitations, failures, and criticisms" dimension must appear as a full section — not a footnote, not a disclaimer. Findings here carry equal weight to other dimensions.
 
 **Writing standard:**
 - Every claim must be attributed (source name, not just a number)
@@ -214,29 +198,42 @@ Organize findings **by insight, not by source.** The output should read as integ
 - Specific over vague: "adoption grew 340% YoY per Gartner 2025" not "adoption is growing rapidly"
 - If you don't know something, say so — a gap identified is more valuable than a gap papered over
 
+### 5b: Contextual interpretation (only if Context Note exists)
+
+**Now — and only now — read the Context Note from Phase 1a.** Apply the user's context as an interpretive lens on top of the objective findings from 5a:
+
+- **Relevance mapping:** Which findings matter most given the user's specific situation? Why?
+- **Risk surfacing:** What risks are specific to the user's framing that the objective findings make visible? What assumptions in the user's context are challenged by the evidence?
+- **Blind spot detection:** What does the evidence suggest the user might be wrong about, or hasn't considered? What questions should they be asking that they haven't asked?
+- **Actionable implications:** Given their stated goals, what should they do with these findings?
+
+This section should feel like a trusted advisor interpreting a report — not rewriting it. The objective findings in 5a stand on their own. 5b adds a personalized layer on top.
+
 ---
 
 ## Phase 6: Package
 
-### Default output structure:
+### Output structure:
 
 **One-line answer** — If the research question has a direct answer, lead with it. One sentence.
 
-**Key findings** (3–7 findings) — The most important things the user should know, ordered by significance. Each finding is 2–4 sentences: the insight, the evidence, and why it matters. Findings flagged as "early signal" or "unverifiable" in Phase 4c should be marked as such here.
+**Key findings** (3–7 findings) — The most important things the user should know, ordered by objective significance (not contextual relevance). Each finding is 2–4 sentences: the insight, the evidence, and why it matters. Findings flagged as "early signal" or "unverifiable" in Phase 4c should be marked as such here.
 
-**Detailed analysis** — The full synthesis from Phase 5, organized by refined dimension.
+**Detailed analysis** — The full objective synthesis from Phase 5a, organized by refined dimension. The mandatory "Limitations, failures, and criticisms" section appears with equal prominence to other dimensions.
 
-**Verification status** — Summary of Phase 4c cross-verification results: how many of the top claims were verified, contradicted, or unverifiable. This tells the user how much to trust the overall findings.
+**For your situation** (only if Context Note exists) — The contextual interpretation from Phase 5b. Which findings matter most for the user's specific goals, what risks their framing surfaces, what blind spots the evidence reveals, and what they should do next. This section is clearly separated from the objective findings — the user should see where objective analysis ends and personalized interpretation begins.
+
+**Verification status** — Summary of Phase 4c results: how many of the top claims were verified, contradicted, or unverifiable. Tells the user how much to trust the overall findings.
 
 **Knowledge gaps & caveats** — What couldn't be found, what's uncertain, what's changing fast enough that these findings may have a short shelf life. Include dimensions flagged in Phase 3 as having no credible evidence.
 
-**Sources** — List the sources used, grouped by tier. This lets the user assess credibility at a glance and dig deeper into specific sources.
+**Sources** — List the sources used, grouped by tier. Lets the user assess credibility at a glance and dig deeper into specific sources.
 
-### Output format:
+### Format:
 
-**In-chat:** Print only the **one-line answer** and **key findings**.
+**In-chat:** Print only the **one-line answer**, **key findings**, and **for your situation** (if Context Note exists).
 
-**File:** Always create a `.md` file containing the full research output (one-line answer, key findings, detailed analysis, verification status, knowledge gaps & caveats, sources grouped by tier). Save to the appropriate output directory.
+**File:** Always create a `.md` file with the full output (all sections). Save to the workspace outputs folder.
 
 If the user asks for a "quick summary" or "brief," skip the file — print only the one-line answer + key findings in chat.
 

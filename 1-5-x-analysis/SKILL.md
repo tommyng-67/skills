@@ -33,9 +33,11 @@ The user wants to **make a decision** — not just understand a topic. They have
 
 ## Default Output
 
-**In-chat:** Print **Step 5: top 3 recommendations** only.
+Run the full analysis (Steps 1–5) internally. Do NOT create a separate file.
 
-**File:** Always create a `.md` file containing the full analysis (problem frame, criteria, all approaches with criterion-by-criterion assessment, decision matrix, and recommendations). Save to `/mnt/user-data/outputs/`.
+**In-chat:** Print **Step 5: top 3 recommendations** — ranked in order of overall strength. For each: which approach (or hybrid), why it wins, critical risks and mitigations, what to watch, and immediate next steps. No problem frame, no criteria definitions, no approach breakdowns, no decision matrix in chat. No headers, tables, or step labels — just clear, direct prose. Keep it tight and decisive.
+
+If the user explicitly asks to save the analysis (e.g., "save this analysis," "write the full analysis"), then create a `1-5-x-[topic-slug].md` file in the workspace/outputs folder with the complete analysis (all steps, all 5+ approaches fully assessed, tables for criteria and decision matrix, headers to separate steps, top 3 recommendations ranked).
 
 ---
 
@@ -197,6 +199,14 @@ Rank the top 3 in order of overall strength. If #1 is clearly superior, say so. 
 
 ## Formatting & Style
 
-- Tables for criteria and decision matrix in the `.md` file.
-- Headers to separate steps in the `.md` file.
+**Chat response** (the only thing printed to the user):
+- All 3 recommended approaches, ranked
+- For each: name, why it wins, critical risks, what to watch, next steps
+- No headers, tables, or step labels — just clear, direct prose
+
+**The `.md` file** (only when explicitly requested):
+- Tables for criteria and decision matrix
+- Headers to separate steps
+- All 5+ approaches fully assessed
+- Top 3 recommendations ranked
 - **Writing standard:** Every sentence must be self-explanatory to a reader with no prior context. No jargon without immediate clarification. No filler. No corporate speak. No "leverage," "synergy," "best-in-class," or "holistic." If a word can be deleted without losing meaning, delete it.

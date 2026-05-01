@@ -33,9 +33,11 @@ The user explicitly asks for a **1-3-1** — a fast, constrained decision framew
 
 ## Default Output
 
-**In-chat:** Print **Step 5: the single recommended approach** only.
+Run the full analysis (Steps 1–5) internally. Do NOT create a separate file.
 
-**File:** Always create a `.md` file containing the full analysis (problem frame, criteria, all 3 approaches with criterion-by-criterion assessment, decision matrix, and recommendation). Save to `/mnt/user-data/outputs/`.
+**In-chat:** Print **Step 5: the single recommended approach** only — the winning approach, why it wins, critical risks, what to watch, and immediate next steps. No problem frame, no criteria definitions, no approach breakdowns, no decision matrix in chat. No headers, tables, or step labels — just clear, direct prose. Keep it tight.
+
+If the user explicitly asks to save the analysis (e.g., "save this analysis," "write the full analysis"), then create a `1-3-1-[topic-slug].md` file in the workspace/outputs folder with the complete analysis (all steps, tables for criteria and decision matrix, headers to separate steps). The saved file should be noticeably shorter than a 1-5-X on the same problem.
 
 ---
 
@@ -182,7 +184,15 @@ Take a decisive position. If you can't choose, explain what information would br
 
 ## Formatting & Style
 
-- Tables for criteria and decision matrix in the `.md` file.
-- Headers to separate steps in the `.md` file.
+**Chat response** (the only thing printed to the user):
+- The recommended approach name and one-sentence summary
+- Why it wins (2–3 sentences)
+- Critical risks and mitigations (brief)
+- What to watch — leading indicators
+- Immediate next steps (2–3 actions)
+- No headers, tables, or step labels needed — just clear, direct prose
+
+**The `.md` file** (only when explicitly requested):
+- Tables for criteria and decision matrix
+- Headers to separate steps
 - **Writing standard:** Every sentence must be self-explanatory to a reader with no prior context. No jargon without immediate clarification. No filler. No corporate speak. No "leverage," "synergy," "best-in-class," or "holistic." If a word can be deleted without losing meaning, delete it.
-- The 1-3-1 `.md` file should be noticeably shorter than a 1-5-X on the same problem.
