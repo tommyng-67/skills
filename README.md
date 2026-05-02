@@ -8,25 +8,26 @@ The pattern they break: jumping to options before defining what matters, evaluat
 
 ## The System
 
-Five skills, each with a distinct purpose. They compose into a pipeline:
+Six skills, each with a distinct purpose. They compose into a pipeline:
 
 ```
-Creative Expansion → 1-5-X or 1-3-1 → Execute
-         ↑                  ↑
-    Deep Research ──────────┘
-         
-    RCA (diagnose failures independently)
+Problem Framing → Creative Expansion → 1-5-X or 1-3-1 → Execute
+                        ↑                    ↑
+                   Deep Research ─────────────┘
+
+RCA (diagnose failures independently)
 ```
 
 | Skill | Purpose | Output | When to Use |
 |---|---|---|---|
+| [**Problem Framing**](./problem-framing/) | Decompose tangled problems | 2–5 ranked problem statements | Multiple intertwined issues, unclear where to start |
 | [**1-3-1 Analysis**](./1-3-1-analysis/) | Decide fast | 1 recommendation | You have a decision with 3 clear options |
 | [**1-5-X Analysis**](./1-5-x-analysis/) | Decide thoroughly | Top 3 ranked | Complex decisions, multiple stakeholders, high stakes |
 | [**Deep Research**](./deep-research/) | Understand a topic | Sourced findings with verification status | You need depth, not a decision |
 | [**Creative Expansion**](./creative-expansion/) | Widen the solution space | 3–5 new directions | You're stuck or narrowing too early |
 | [**RCA**](./rca/) | Diagnose failures | Root causes, tensions, gaps | Something broke and you need to know *why* |
 
-Each skill is self-contained. Use one alone or chain them — Creative Expansion opens options, 1-5-X evaluates them, Deep Research feeds evidence into either.
+Each skill is self-contained. Use one alone or chain them — Problem Framing decomposes chaos into clean problems, Creative Expansion opens options, 1-5-X evaluates them, Deep Research feeds evidence into any.
 
 ---
 
@@ -68,6 +69,7 @@ cp -r skills/1-5-x-analysis ~/.claude/skills/
 cp -r skills/deep-research ~/.claude/skills/
 cp -r skills/creative-expansion ~/.claude/skills/
 cp -r skills/rca ~/.claude/skills/
+cp -r skills/problem-framing ~/.claude/skills/
 ```
 
 ### Other Platforms (Cursor, Codex, etc.)
