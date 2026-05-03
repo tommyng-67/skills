@@ -20,7 +20,7 @@ RCA (diagnose failures independently)
 
 | Skill | Purpose | Output | When to Use |
 |---|---|---|---|
-| [**Problem Framing**](./problem-framing/) | Decompose tangled problems | 2–5 ranked problem statements | Multiple intertwined issues, unclear where to start |
+| [**Problem Framing**](./problem-framing/) | Decompose tangled problems | 2–5 dual-framed problem-opportunity statements | Multiple intertwined issues, unclear where to start |
 | [**1-3-1 Analysis**](./1-3-1-analysis/) | Decide fast | 1 recommendation | You have a decision with 3 clear options |
 | [**1-5-X Analysis**](./1-5-x-analysis/) | Decide thoroughly | Top 3 ranked | Complex decisions, multiple stakeholders, high stakes |
 | [**Deep Research**](./deep-research/) | Understand a topic | Sourced findings with verification status | You need depth, not a decision |

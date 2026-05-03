@@ -1,11 +1,11 @@
 ---
 name: problem-framing
 description: >
-  Decompose messy, multi-problem situations into clean, distinct, prioritized problem statements
-  — each ready for 1-5-X analysis. Four steps: Dump (get everything on the table), Untangle
-  (separate symptoms from root causes, map dependencies), Prioritize (impact × urgency ×
-  dependency position), Package (write 1-5-X-ready problem statements). Use this BEFORE 1-5-X
-  when the user has multiple intertwined problems. Trigger on: "I have a lot of problems",
+  Decompose messy, multi-problem situations into clean, distinct, prioritized problem-opportunity
+  statements — each ready for 1-5-X analysis. Four steps: Dump (get everything on the table),
+  Untangle (separate symptoms from root causes, map dependencies, surface hidden opportunities),
+  Prioritize (impact × urgency × dependency position), Package (write dual-framed 1-5-X-ready
+  statements). Use this BEFORE 1-5-X when the user has multiple intertwined problems. Trigger on: "I have a lot of problems",
   "everything is broken", "where do I even start", "too many issues", "it's a mess",
   "problem-framing", "help me untangle this", "which problem should I solve first",
   "I don't know what the real problem is", "there's a lot going on", "multiple issues",
@@ -20,7 +20,13 @@ description: >
 
 This skill exists because 1-5-X is a precision tool — it works brilliantly on one well-defined problem, but breaks down when handed a tangle of intertwined issues. When a user shows up with "everything is on fire," the instinct is to jump straight into solutions. The right move is to slow down and figure out what the actual problems are first.
 
-This skill turns chaos into a ranked list of clean problem statements. Each one is ready to be fed into 1-5-X individually. That's the only job — decomposition and prioritization, not solutions.
+This skill turns chaos into a ranked list of clean, dual-framed statements. Each one is ready to be fed into 1-5-X individually. That's the only job — decomposition and prioritization, not solutions.
+
+### The duality principle
+
+Problems and opportunities are the same situation viewed from different angles. "Our best salesperson quit" is a problem — but it's also an opportunity to build a sales system that doesn't depend on one person. "Declining conversion rate" is a problem — but it may also signal an untapped segment the current funnel was never designed to reach.
+
+This skill diagnoses with full rigor — symptoms, root causes, dependencies — then flips each problem into its opportunity counterpart. The frame you hand to 1-5-X shapes every approach it generates. A problem frame triggers fix-it thinking. An opportunity frame triggers build-it thinking. Both frames together produce the strongest downstream analysis.
 
 ---
 
@@ -36,7 +42,7 @@ The user has **multiple problems tangled together** and doesn't know which one t
 |---|---|---|---|---|---|
 | **Purpose** | Decompose & prioritize problems | Expand the solution space | Decide between approaches | Decide fast | Understand a topic |
 | **Input** | A mess of intertwined issues | A single challenge, narrowly framed | One well-defined problem | One well-defined problem | A topic to investigate |
-| **Output** | 2–5 ranked, distinct problem statements | 3–5 directions to explore | Top 3 ranked approaches | 1 recommendation | Findings and insights |
+| **Output** | 2–5 ranked problem-opportunity statements | 3–5 directions to explore | Top 3 ranked approaches | 1 recommendation | Findings and insights |
 | **When** | Before you know what the problem is | Before you're ready to decide | When the problem is clear | When speed matters | When you need to learn |
 | **Handoff** | → 1-5-X (per problem) | → 1-5-X or 1-3-1 | ← from Problem Framing | ← from Problem Framing | ← can feed into any |
 
@@ -111,9 +117,11 @@ Draw the causal relationships between the remaining problems:
 
 The dependency map is the most important artifact in this skill. It determines the attack sequence in Step 3 — you solve upstream problems before downstream ones, because solving upstream often dissolves downstream for free.
 
-### 2d: Check for the hidden problem
+### 2d: Check for the hidden problem — and the hidden opportunity
 
 Sometimes the dump and the untangling reveal a problem that nobody named — a structural issue, a strategic misalignment, or a capability gap that's causing multiple visible problems. If you see one, name it explicitly and add it to the map. This is often the most valuable problem to solve, and it's the one most likely to be missed without this step.
+
+Apply the same lens to opportunities. The tangle often conceals a strategic opening that only becomes visible after untangling — a capability the team is accidentally building, a market position the competition hasn't noticed, or a constraint that, once removed, unlocks several problems at once. Name any hidden opportunity and note which problems it connects to.
 
 ### Output of Step 2:
 
@@ -157,6 +165,8 @@ Write each problem as a **self-contained problem statement** that 1-5-X can pick
 
 **Dependency note** — how this problem relates to the others. "Solving this first will likely reduce Problem #3 (rising CAC) as a side effect." Or: "This is independent of the others — it needs its own solution regardless."
 
+**Opportunity reframe** — the same situation expressed as a strategic opening. Not forced optimism — a specific advantage that becomes available by solving this problem. "Acquisition channel dependency on paid search" reframes to "First-mover window to build an organic engine competitors haven't invested in." The reframe must name a concrete strategic gain, not just invert the negative.
+
 **What 1-5-X should focus on** — a brief steering note so 1-5-X frames the problem correctly. "Focus on sustainable acquisition channels, not quick-fix tactics."
 
 ### The handoff:
@@ -184,7 +194,7 @@ This makes the pipeline explicit. Problem Framing decomposes. 1-5-X solves. They
 ## Formatting & Style
 
 **Chat response** (what the user sees):
-- The ranked problem stack: each problem with its name, one-line diagnosis, why it matters, and dependency note
+- The ranked problem stack: each problem with its name, one-line diagnosis, opportunity reframe, why it matters, and dependency note
 - The handoff prompt pointing to 1-5-X
 - No dump lists, no untangling details, no prioritization reasoning in chat — just the clean output
 - Tone: calm, clarifying, authoritative. The user arrived in chaos — the output should feel like someone turned on the lights. Short sentences. No hedging.
