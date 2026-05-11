@@ -1,12 +1,10 @@
-# AI Thinking Skills
+# AI Skills
 
-Structured methodologies that turn AI into a rigorous thinking partner — for decisions, research, creative exploration, and diagnostics.
-
-The pattern they break: jumping to options before defining what matters, evaluating with gut feel instead of criteria, and confusing "I researched it" with "I read one article and formed an opinion."
+Structured methodologies and production engines that turn AI into a rigorous thinking partner and content machine — for decisions, research, creative exploration, diagnostics, and publish-ready content.
 
 ---
 
-## The System
+## Thinking Skills
 
 Six skills, each with a distinct purpose. They compose into a pipeline:
 
@@ -28,6 +26,18 @@ RCA (diagnose failures independently)
 | [**RCA**](./rca/) | Diagnose failures | Root causes, tensions, gaps | Something broke and you need to know *why* |
 
 Each skill is self-contained. Use one alone or chain them — Problem Framing decomposes chaos into clean problems, Creative Expansion opens options, 1-5-X evaluates them, Deep Research feeds evidence into any.
+
+---
+
+## Production Skills
+
+Skills that generate publish-ready content with built-in design systems.
+
+| Skill | Purpose | Output | When to Use |
+|---|---|---|---|
+| [**LinkedIn Carousel**](./linkedin-carousel/) | Design LinkedIn carousel posts | Swipeable HTML + PNG/PDF export | You have content and need beautiful, consistent carousel slides |
+
+Each production skill includes a full design system (typography, color tokens, component library) and generates self-contained HTML files with export capabilities.
 
 ---
 
@@ -70,6 +80,7 @@ cp -r skills/deep-research ~/.claude/skills/
 cp -r skills/creative-expansion ~/.claude/skills/
 cp -r skills/rca ~/.claude/skills/
 cp -r skills/problem-framing ~/.claude/skills/
+cp -r skills/linkedin-carousel ~/.claude/skills/
 ```
 
 ### Other Platforms (Cursor, Codex, etc.)
