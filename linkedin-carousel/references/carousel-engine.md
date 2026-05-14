@@ -30,7 +30,7 @@ Copy this entire `:root` block and the Google Fonts `@import` into every output 
 :root {
   /* ---------- Primary brand palette ---------- */
   --core:        #3d8b8a;                       /* Sage teal — primary accent */
-  --core-soft:   rgba(74, 144, 217, 0.12);      /* Subtle fill, tag chips */
+  --core-soft:   rgba(61, 139, 138, 0.12);      /* Subtle fill, tag chips */
   --core-light:  #6abfbe;                       /* Secondary accent on dark */
   --core-deep:   #1a5c5b;                       /* High-contrast text on light */
 
