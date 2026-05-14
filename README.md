@@ -35,9 +35,9 @@ Skills that generate publish-ready content with built-in design systems.
 
 | Skill | Purpose | Output | When to Use |
 |---|---|---|---|
-| [**LinkedIn Carousel**](./linkedin-carousel/) | Design LinkedIn carousel posts | Swipeable HTML + PNG/PDF export | You have content and need beautiful, consistent carousel slides |
+| [**LinkedIn Graphics**](./linkedin-graphics/) | Design LinkedIn carousels and infographics | Self-contained HTML + PNG/PDF export | You have content and need beautiful, consistent LinkedIn visuals |
 
-Each production skill includes a full design system (typography, color tokens, component library) and generates self-contained HTML files with export capabilities.
+Includes two sub-skills — [Carousel](./linkedin-graphics/carousel/) (10-slide swipeable posts) and [Infographic](./linkedin-graphics/infographic/) (single-image 4:5 format) — sharing one design language: typography, color tokens, component library, and decorative elements. Each sub-skill is fully self-contained.
 
 ---
 
@@ -80,7 +80,8 @@ cp -r skills/deep-research ~/.claude/skills/
 cp -r skills/creative-expansion ~/.claude/skills/
 cp -r skills/rca ~/.claude/skills/
 cp -r skills/problem-framing ~/.claude/skills/
-cp -r skills/linkedin-carousel ~/.claude/skills/
+cp -r skills/linkedin-graphics/carousel ~/.claude/skills/
+cp -r skills/linkedin-graphics/infographic ~/.claude/skills/
 ```
 
 ### Other Platforms (Cursor, Codex, etc.)
